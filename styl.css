@@ -1,0 +1,1369 @@
+  body {
+              display: flex;
+    flex-direction: column; /* KLUCZOWA LINIJKA: Układa sekcje pionowo, jedna pod drugą! */
+    align-items: center;    /* Centruje obie sekcje w poziomie na ekranie */
+    min-height: 100vh;
+    margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            
+            /* TŁO NR 3 Z ELEMENTAMI SZKOLNYMI:
+               1. Łączymy gigantyczne plamy światła (błękitną i rudą) w rogach.
+               2. Nakładamy powtarzalny wzór przezroczystych ikon SVG (kredka, książka, żarówka, linijka). */
+            background-color: #f8fafc;
+            background-image: 
+                /* Przezroczysty wzór ikon szkolnych SVG */
+                url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='%23000000' fill-opacity='0.03'%3E%3Cpath d='M20 15h15v2H20zm2 4h11v2H22zm-2 6h15v2H20zm50-10a8 8 0 0 0-7 12h2a6 6 0 1 1 10 0h2a8 8 0 0 0-7-12zm-2 13h4v2h-4zm7 15l-8 15h-3l2-15zm-47 52l30-20 3 3-30 20zm5-3l22-15 1 2-22 15zM100 20l12 12-5 5-12-12zm2 2l8 8-2 2-8-8z'/%3E%3Ccircle cx='70' cy='32' r='2'/%3E%3C/g%3E%3C/svg%3E"),
+                /* Błękitna łuna w lewym górnym rogu */
+                radial-gradient(at 0% 0%, rgba(78, 168, 222, 0.12) 0px, transparent 55%),
+                /* Ruda łuna w prawym dolnym rogu */
+                radial-gradient(at 100% 100%, rgba(217, 119, 6, 0.08) 0px, transparent 55%);
+            background-attachment: fixed; /* Zapobiega przewijaniu się wzoru tła */
+        }
+				
+				.sekcja-hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            width: 90%;
+            max-width: 1200px;
+            margin-top: 80px;
+        }
+
+        /* Lewa strona - Tekst */
+        .tekst-kontener {
+            flex: 1;
+            max-width: 600px;
+        }
+
+.glowny-tytul {
+    font-size: 4.5rem;    
+    font-weight: 800;     
+    
+    /* POPRAWKA NA UCINANIE LITERY "G": */
+    line-height: 1.3;          /* Minimalnie zwiększona wysokość linii (było 1.2) */
+    padding-bottom: 10px;      /* Dodatkowa przestrzeń na dole dla ogonków liter */
+    
+    /* Odstęp od podtytułu (zmniejszony o 10px, bo padding dodał dół, więc bilans wychodzi na 40px) */
+    margin: 0 0 10px 0; 
+    
+    /* Gradient na tekście */
+    background: linear-gradient(135deg, #00b4d8 0%, #0077b6 50%, #03045e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.podtytul {
+    font-size: 1.1rem;
+    color: #64748b;
+    line-height: 1.6;
+    margin: 0;
+    width: 100%; /* Wymusza zapełnienie całej dostępnej przestrzeni */
+		font-weight: 600;
+}
+
+
+  /* STYLIZACJA JASNORUDEGO PRZYCISKU CTA */
+        .przycisk-cta {
+            display: inline-block;
+            text-decoration: none;
+            /* Kolor jasnorudy (ciepły, nasycony pomarańcz terracotta) */
+            background-color: #bb7539; 
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 14px 32px;
+            border-radius: 25px; /* Zaokrąglone rogi pasujące do stylu */
+            box-shadow: 0 10px 20px rgba(217, 119, 6, 0.2);
+            transition: all 0.3s ease;
+						margin-top: 30px;
+						
+        }
+
+        /* Efekt po najechaniu na przycisk */
+        .przycisk-cta:hover {
+            background-color: #b45309; /* Nieco ciemniejszy, głęboki rudy */
+            transform: translateY(-3px); /* Delikatne uniesienie */
+            box-shadow: 0 15px 25px rgba(217, 119, 6, 0.35);
+        }
+
+        /* Efekt po kliknięciu */
+        .przycisk-cta:active {
+            transform: translateY(-1px);
+        }
+				
+				
+				
+.tekst-kontener {
+    flex: 1;
+    max-width: 600px; /* Zmiana z 500px na 600px (lub więcej, zależnie od potrzeb) */
+}
+        /* Prawa strona - Sekcja graficzna */
+        .kompozycja-kontener {
+            position: relative;
+            width: 550px;       
+            height: 480px;      
+            flex-shrink: 0;     
+        }
+        /* Plama działająca jako tablica */
+     .blob-czworobok {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 440px;
+    height: 400px;
+    z-index: 1;
+    background: linear-gradient(135deg, #4ea8de 0%, #0077b6 100%);
+    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+    transition: all 0.5s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Przywracamy czysty, lekki, oryginalny cień zamiast rudej poświaty */
+    box-shadow: 0 25px 50px rgba(0, 119, 182, 0.15); 
+}
+
+
+
+
+
+
+
+
+
+        .blob-czworobok:hover {
+            transform: scale(1.02) rotate(1deg);
+            border-radius: 55% 45% 35% 65% / 40% 60% 40% 60%;
+            background: linear-gradient(135deg, #64dfdf 0%, #0096c7 100%);
+            box-shadow: 0 30px 60px rgba(0, 119, 182, 0.25);
+        }
+
+        /* STYLIZACJA NAPISU KREDĄ */
+.napisy-kreda {
+    font-family: 'Caveat', cursive; 
+    color: rgba(255, 255, 255, 0.95); 
+    font-size: 2.2rem;
+    line-height: 1.4;
+		text-align: center;
+    
+    /* Przywracamy prawidłowy, dodatni padding */
+    padding: 30px; 
+    
+    pointer-events: none; 
+    
+    /* KLUCZOWA ZMIANA: Dodajemy ujemny margines, który bezwzględnie ciągnie tekst w lewo,
+       oraz łączymy go z obrotem w jednej linii transformacji */
+    margin-left: -60px; /* Możesz zwiększyć do -80px, jeśli chcesz jeszcze mocniej w lewo */
+    transform: rotate(-3deg); 
+
+    /* Efekt pyłu kredowego */
+    text-shadow: 
+        0 0 2px rgba(255,255,255,0.3), 
+        1px 1px 3px rgba(255,255,255,0.2);
+}
+
+.napisy-kreda ul {
+    margin: 10px 0 0 0;
+    padding-left: 15px; /* Delikatny odstęp, aby myślniki ładnie komponowały się z tekstem powyżej */
+    list-style-type: none; 
+}
+
+        .napisy-kreda li {
+            margin-bottom: 5px;
+        }
+
+        /* Obrazek nałożony na plamę */
+        .nakladany-obrazek {
+            position: absolute;
+            bottom: -10px;       
+            right: -40px; /* Lekkie odsunięcie w prawo z poprzedniego kroku */         
+            z-index: 2; 
+            
+            width: 320px;       
+            height: auto;
+            border-radius: 24px; 
+            transition: transform 0.3s ease;
+        }
+
+        /* Responsywność */
+ @media (max-width: 992px) {
+    .sekcja-hero {
+        flex-direction: column-reverse; /* Grafika nad tekstem na telefonach */
+        text-align: center; 
+        margin-top: 30px;
+        gap: 40px;
+    }
+    
+    .tekst-kontener {
+        max-width: 100%;
+    }
+    
+    .glowny-tytul {
+        font-size: 2.6rem;
+    }
+
+    /* Kontener zachowuje stałą wysokość, by elementy mogły na siebie nachodzić */
+    .kompozycja-kontener {
+        width: 100%;
+        max-width: 440px;
+        height: 430px; 
+    }
+
+    /* Plama zostaje jako baza */
+    .blob-czworobok {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 380px; /* Nieco wyższa, by dać tekstowi więcej miejsca */
+        justify-content: flex-start; /* Tekst od lewej */
+        align-items: center;
+    }
+
+    /* KLUCZ DO CZYTELNOŚCI: Blokujemy tekst przed wchodzeniem pod obrazek */
+    .napisy-kreda {
+        font-size: 2.2rem;        /* Delikatnie mniejsza czcionka kredowa na mobile */
+        text-align: center;
+        padding-top: 20px;
+        padding-left: 120px;       /* Odstęp od lewej krawędzi plamy */
+        padding-right: 140px;     /* POTĘŻNY ODSTĘP OD PRAWEJ - rezerwacja miejsca na obrazek! */
+        transform: rotate(-3deg);  /* Zachowujemy oryginalny, zawadiacki obrót tekstu */
+    }
+
+    /* OBRAZEK NAŁOŻONY – zmniejszony i przesunięty, by nie zasłaniał środka */
+    .nakladany-obrazek {
+        position: absolute;
+        width: 200px;             /* Zmniejszamy obrazek na mobile (z 320px) */
+        bottom: 15px;             /* Ściągamy go niżej */
+        right: -15px;             /* Przesuwamy bardziej w prawo poza krawędź plamy */
+        z-index: 2;               /* Nadal dumnie nakłada się na plamę! */
+    }
+        }
+				
+				
+				
+				/* Efekt pojawiania się punktów na tablicy */
+.napisy-kreda li {
+    opacity: 0;
+    animation: pojawiSieKreda 0.8s ease-out forwards;
+}
+
+/* Każdy kolejny punkt pojawia się z opóźnieniem */
+.napisy-kreda li:nth-child(1) { animation-delay: 0.3s; }
+.napisy-kreda li:nth-child(2) { animation-delay: 0.9s; }
+.napisy-kreda li:nth-child(3) { animation-delay: 1.5s; }
+.napisy-kreda li:nth-child(4) { animation-delay: 2.1s; }
+
+@keyframes pojawiSieKreda {
+    to {
+        opacity: 0.95;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+
+/* Efekt pojawiania się punktów na tablicy */
+.napisy-kreda li {
+    opacity: 0;
+    animation: pojawiSieKreda 0.8s ease-out forwards;
+}
+
+/* Każdy kolejny punkt pojawia się z opóźnieniem */
+.napisy-kreda li:nth-child(1) { animation-delay: 0.3s; }
+.napisy-kreda li:nth-child(2) { animation-delay: 0.9s; }
+.napisy-kreda li:nth-child(3) { animation-delay: 1.5s; }
+.napisy-kreda li:nth-child(4) { animation-delay: 2.1s; }
+
+@keyframes pojawiSieKreda {
+    to {
+        opacity: 0.95;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+				/*NADTYTUŁ*/
+				.odznaka-nowosc {
+    display: inline-flex;
+    align-items: center;
+    background-color: rgba(217, 119, 6, 0.1); /* Bardzo delikatne, rude tło */
+    color: #b45309;                           /* Ciemniejszy rudy tekst dla kontrastu */
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 6px 16px;
+    border-radius: 20px;                      /* Idealnie okrągłe brzegi pigułki */
+    margin-bottom: 10px;                      /* Odstęp od głównego tytułu */
+		margin-top: 40px;
+}
+
+/* Mała, pulsująca kropka wewnątrz pigułki */
+.odznaka-nowosc .kropka {
+    width: 6px;
+    height: 6px;
+    background-color: #d97706;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+/*KONIEC NADTYTUŁU*/
+
+
+
+
+
+
+/* --- ZMIANY DLA MOBILES (Wklej do swojej istniejącej reguły @media na dole kodu) --- */
+@media (max-width: 992px) {
+    
+    .odznaka-nowosc {
+        /* Przesunięcie do góry o 30px poprzez zmniejszenie marginesu z 40px na 10px */
+        margin-top: -80px !important; 
+        
+        /* Opcjonalnie: możesz też nieznacznie zmniejszyć dolny margines na telefonach */
+        margin-bottom: 8px; 
+    }
+
+}
+
+
+				
+				
+				
+/* ==========================================
+   STYLIZACJA NOWEJ, JASNONIEBIESKIEJ SEKCJI 
+   ========================================== */
+
+.nowa-sekcja {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 80px auto; /* Centrowanie sekcji i dolny margines */
+    
+    /* Kolor tła: bardzo jasny, pastelowy błękit (Sky Blue) */
+    background-color: #e0f2fe; 
+    
+    /* Zaokrąglone rogi sekcji */
+    border-radius: 32px; 
+    
+    /* Wewnętrzne oddechy dla treści (góra/dół: 60px, boki: 40px) */
+    padding: 60px 40px; 
+    box-sizing: border-box;
+    
+    /* Subtelny cień nadający lekkości */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+
+}
+
+/* Kontener centrujący treść wewnątrz nowej sekcji */
+.nowa-sekcja-tresc {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Nagłówek w nowej sekcji */
+.nowa-sekcja-tresc h2 {
+    color: #03045e; /* Głęboki, kontrastowy granat */
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+
+/* Tekst akapitowy w nowej sekcji */
+.nowa-sekcja-tresc p {
+    color: #1e3a8a; /* Ciemnoniebieski odcień tekstu */
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Responsywność dla urządzeń mobilnych (ekrany poniżej 992px) */
+@media (max-width: 992px) {
+    .nowa-sekcja {
+        padding: 40px 20px; /* Zmniejszone marginesy wewnętrzne na telefonach */
+        border-radius: 24px; /* Nieco mniejsze zaokrąglenie dopasowane do małych ekranów */
+				margin-top: 50px;
+				
+    }
+}
+				
+/*KOLOROWE ZAKŁADKI*/
+/* ========================================================
+   STYLIZACJA KART (ELASTYCZNOŚĆ, PRAKTYKA, SPOŁECZNOŚĆ)
+   ======================================================== */
+
+/* Układ trójkolumnowy wewnątrz nowej sekcji */
+.nowa-sekcja-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 kolumny o równej szerokości */
+    gap: 30px;                             /* Odstępy między kartami */
+    margin-top: 10px;                      /* Odległość od nagłówka sekcji */
+    text-align: left;                      /* Wyrównanie tekstu w kartach do lewej */
+}
+
+/* Pojedyncza karta wizytowa */
+.karta-wizytowa {
+    background-color: #ffffff;
+    border-radius: 24px;
+    padding: 35px 30px 30px 30px;
+    box-shadow: 0 10px 25px rgba(30, 58, 138, 0.04); /* Bardzo delikatny, niebieskawy cień */
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Delikatny efekt uniesienia karty po najechaniu myszką */
+.karta-wizytowa:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(30, 58, 138, 0.08);
+}
+
+/* WSPÓLNY STYL DLA PASTELOWYCH ZAKŁADEK Z IKONAMI */
+.karta-zakladka {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    margin-bottom: 24px;
+}
+
+/* Kolorystyka poszczególnych zakładek (Pastelowe odcienie) */
+.karta-wizytowa.elastycznosc .karta-zakladka {
+    background-color: #dcfce7; /* Pastelowy miętowy zielony */
+    color: #15803d;
+}
+
+.karta-wizytowa.praktyka .karta-zakladka {
+    background-color: #ffedd5; /* Pastelowy brzoskwiniowy pomarańcz */
+    color: #c2410c;
+}
+
+.karta-wizytowa.spolecznosc .karta-zakladka {
+    background-color: #f3e8ff; /* Pastelowy lawendowy fiolet */
+    color: #7e22ce;
+}
+
+/* Styl dla ikon SVG wewnątrz zakładek */
+.karta-zakladka svg {
+    width: 28px;
+    height: 28px;
+    fill: none;
+    stroke: currentColor; /* Ikona przyjmuje ciemniejszy kolor danej zakładki */
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Teksty wewnątrz kart */
+.karta-wizytowa h3 {
+    font-size: 1.4rem;
+    color: #03045e; /* Granatowy spójny z resztą strony */
+    margin: 0 0 12px 0;
+    font-weight: 700;
+}
+
+.karta-wizytowa p {
+    font-size: 1rem;
+    color: #475569; /* Stonowany szary do długich tekstów */
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* --- RESPONSYWNOŚĆ KART --- */
+@media (max-width: 992px) {
+    .nowa-sekcja-grid {
+        grid-template-columns: 1fr; /* Na tabletach i telefonach karty ułożą się w pionie */
+        gap: 20px;
+    }
+    
+    .karta-wizytowa {
+        padding: 30px 25px;
+    }
+}
+
+
+
+
+
+
+
+
+
+/*OFERTA*/
+
+/* ========================================================
+   STYLIZACJA SEKCJI OFERTOWEJ (3 PAKIETY I CENY)
+   ======================================================== */
+
+.sekcja-oferta-kontener {
+    margin-top: -60px;
+    padding-top: 50px;
+}
+
+
+/* --- ZMIANY DLA MOBILE (Wklej do swojej istniejącej reguły @media na dole kodu) --- */
+@media (max-width: 992px) {
+    
+    .sekcja-oferta-kontener {
+        /* 1. PODNIESIENIE DO GÓRY: Mocniejsze podciągnięcie sekcji w pionie */
+        margin-top: -100px !important; 
+        
+        /* 2. ZWĘŻENIE I MARGINESY: Wymuszenie 90% szerokości i automatyczne centrowanie.
+           Dzięki temu po bokach powstanie estetyczny oddech (po 5% z każdej strony). */
+        width: 90% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        
+        /* Zmniejszamy padding, aby na małych ekranach pakiety nie były zbyt ściśnięte */
+        padding-top: 30px !important; 
+        
+        /* Usuwamy ewentualną linię przerywaną na mobile, jeśli nachodzi na elementy wyżej */
+        border-top: none !important; 
+    }
+
+}
+
+
+
+.oferta-naglowek {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.oferta-naglowek h3 {
+    color: #03045e;
+    font-size: 1.8rem;
+    margin: 0 0 10px 0;
+}
+
+/* SIATKA 3 KOLUMN: Idealna harmonia z kartami powyżej */
+.oferta-pakiety-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 równe kolumny */
+    gap: 25px; /* Kompaktowy odstęp, aby 3 karty ładnie się mieściły */
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Pojedyncza karta pakietu */
+.pakiet-karta {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 35px 25px;
+    box-shadow: 0 10px 30px rgba(30, 58, 138, 0.03);
+    border: 2px solid transparent;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* WYRÓŻNIENIE ŚRODKOWEGO PAKIETU (PREMIUM) */
+.pakiet-karta.premium {
+    border-color: #d97706; /* Jasnoruda ramka */
+    transform: scale(1.02); /* Minimalne powiększenie dla wyróżnienia */
+    box-shadow: 0 15px 35px rgba(217, 119, 6, 0.08);
+}
+
+/* Etykieta na pakiecie premium */
+.pakiet-etykieta {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #d97706; /* Kolor rudy */
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 14px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.pakiet-nazwa {
+    font-size: 1.4rem;
+    color: #03045e;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.pakiet-cena {
+    font-size: 2.2rem;
+    color: #03045e;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.pakiet-cena span {
+    font-size: 0.95rem;
+    color: #64748b;
+    font-weight: 400;
+}
+
+/* Lista cech */
+.pakiet-cechy {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px 0;
+    flex-grow: 1; /* Popycha przycisk na sam dół */
+}
+
+.pakiet-cechy li {
+    font-size: 0.95rem;
+    color: #475569;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    text-align: left;
+}
+
+.pakiet-cechy li::before {
+    content: "\2713"; /* Bezpieczny kod Unicode dla symbolu '?' */
+    color: #0077b6;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+/* Przycisk zakupu */
+.pakiet-przycisk {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: 2px solid #0077b6;
+    color: #0077b6;
+    transition: all 0.3s ease;
+}
+
+.pakiet-przycisk:hover {
+    background-color: #0077b6;
+    color: #ffffff;
+}
+
+/* Przycisk w pakiecie premium */
+.pakiet-karta.premium .pakiet-przycisk {
+    background: linear-gradient(135deg, #0077b6 0%, #03045e 100%);
+    border: none;
+    color: #ffffff;
+    padding: 14px;
+}
+
+/* --- RESPONSYWNOŚĆ --- */
+@media (max-width: 992px) {
+    .oferta-pakiety-grid {
+        grid-template-columns: 1fr; /* Jeden pod drugim na małych ekranach */
+        gap: 35px;
+        max-width: 400px;
+    }
+    .pakiet-karta.premium {
+        transform: none; /* Wyłączamy powiększenie na mobile */
+    }
+}
+/*KONIEC OFERTY*/
+
+
+
+
+
+/* ========================================================
+   POPRAWKA: WYSTAJĄCY OBRAZKA ZA PAKIETEM START
+   ======================================================== */
+
+/* Ta klasa tworzy bezpieczny "worek" warstwowy dla pierwszej karty */
+.pakiet-karta.pozycja-relatywna-obrazek {
+    position: relative !important;
+    overflow: visible !important; 
+    
+    /* KLUCZ DO POPRAWKI: Wymusza na przeglądarce stworzenie nowego kontekstu warstw.
+       Dzięki temu z-index: -1 na obrazku schowa go dokładnie za tę kartę, 
+       a nie za całą stronę! */
+    isolation: isolate; 
+}
+
+
+
+
+
+
+
+/*GÓRNY NIEBIESKI NAV*/
+/* ========================================================
+   STYLIZACJA GÓRNEGO NIEBIESKIEGO PANELU Z ZAOKRĄGLONYM DOŁEM
+   ======================================================== */
+
+/* ========================================================
+   ZAKTUALIZOWANA STYLIZACJA GÓRNEGO PANELU (ZWĘŻONEGO)
+   ======================================================== */
+
+.gorny-niebieski-panel {
+    /* KLUCZOWA ZMIANA: Szerokość idealnie spójna z resztą sekcji na stronie */
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto; /* Automatyczne centrowanie elementu na środku ekranu */
+    
+    /* Głęboki gradient */
+    background: linear-gradient(135deg, #0b2545 0%, #134074 100%);
+    
+    /* Zaokrąglenie dolnych boków (góra pozostaje prosta) */
+    border-radius: 0 0 40px 40px; 
+    
+    /* Wewnętrzne oddechy wewnątrz panelu (góra/dół: 20px, boki: 40px) */
+    padding: 20px 40px;
+    box-sizing: border-box;
+    
+    /* Subtelny cień */
+    box-shadow: 0 10px 30px rgba(11, 37, 69, 0.1);
+    
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.gorny-niebieski-panel {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    
+    /* 1. BEZPIECZNE TŁO SZKŁA: Zamiast ciemnego gradientu, dajemy jasną, 
+       półprzezroczystą warstwę. Zapewnia to idealny kontrast i widoczność */
+    background: rgba(255, 255, 255, 0.45); 
+    
+    /* 2. EFEKT ROZMYCIA: Dodajemy przedrostek dla Safari (-webkit-) oraz standardową regułę */
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    
+    border-radius: 0 0 40px 40px; 
+    padding: 20px 40px;
+    box-sizing: border-box;
+    
+    /* Delikatna, jasna krawędź przypominająca błysk szkła */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-top: none; /* Górna krawędź dotyka brzegu, więc zostaje czysta */
+    
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    display: flex;
+    justify-content: center;
+    
+    /* 3. WYMUSZENIE WARSTWY: Dzięki temu panel lekko "unosi się" nad stroną */
+    position: relative;
+    z-index: 10;
+		margin-bottom: 10px;
+}
+
+/* ZMIANA DLA TEKSTÓW W PANELU: 
+   Skoro szkło jest teraz jasne, teksty i linki wewnątrz muszą być CIEMNE dla czytelności */
+.gorny-panel-tresc {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #03045e; /* Zmiana na głęboki granat */
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.gorny-link {
+    color: #03045e;
+    text-decoration: none;
+    background-color: rgba(3, 4, 94, 0.08); /* Ciemniejsza pigułka pod link */
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.gorny-link:hover {
+    background-color: rgba(3, 4, 94, 0.15);
+}
+
+/* 4. KLUCZOWY TRICK WIZUALNY: Podciągamy sekcję Hero w górę o 40 pikseli. 
+   Dzięki temu górny fragment tytułu i niebieskiej plamy wsunie się POD szklany panel. 
+   Gdy zaczniesz przewijać stronę, zobaczysz jak elementy niesamowicie rozmywają się pod szkłem! */
+.sekcja-hero {
+    margin-top: -40px !important; 
+    position: relative;
+    z-index: 1;
+}
+
+
+
+
+/*KONIEC GÓRNEGO NAV*/
+
+
+
+
+
+
+/* ========================================================
+   STYLIZACJA STOPKI STRONY Z NAKŁADANYM OBRAZKIEM
+   ======================================================== */
+
+.stopka-strony {
+    width: 100%;
+    /* Głęboki ciemnoniebieski kolor, spójny z górnym panelem */
+    background: linear-gradient(135deg, #0b2545 0%, #071e3d 100%);
+    color: #ffffff;
+    
+    /* Duży górny margines jest KLUCZOWY – tworzy przestrzeń, 
+       w którą wjedzie wystający z lewej strony obrazek */
+    margin-top: 140px; 
+    
+    padding: 60px 0 40px 0;
+    box-sizing: border-box;
+    position: relative;
+    
+    /* Wymuszamy nowy kontekst warstw, aby obrazek idealnie współgrał ze stopką */
+    isolation: isolate; 
+}
+
+/* Główny kontener stopki (szerokość identyczna jak reszta strony) */
+.stopka-kontener {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+/* LEWA STRONA - Kontener pozycjonujący nałożony obrazek */
+.stopka-obrazek-sekcja {
+    position: relative;
+    flex: 1;
+    height: 100px; /* Niska wysokość bazy pozwala obrazkowi wybić się w górę */
+}
+
+/* OBRAZEK NAKŁADANY I WYSTAJĄCY DO GÓRY */
+.stopka-nakladany-obrazek {
+    position: absolute;
+    
+    /* POPRAWKA: Przesunięcie dostosowane do nowej wielkości (z -110px na -130px) */
+    top: -130px; 
+    left: 0;
+    
+    /* ZMIANA: Delikatne powiększenie obrazka (z 240px na 280px) */
+    width: 300px; 
+    
+    height: auto;
+    z-index: 2; 
+    border-radius: 24px;
+    transition: transform 0.3s ease;
+}
+
+/* PRAWA STRONA - Dane teleadresowe */
+.stopka-dane-sekcja {
+    flex: 1;
+    max-width: 400px;
+    text-align: left;
+}
+
+.stopka-dane-sekcja h3 {
+    font-size: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 24px;
+    color: #ffffff;
+    font-weight: 700;
+    position: relative;
+}
+
+/* Mała ruda kreska pod napisem Kontakt dla spójności z CTA */
+.stopka-dane-sekcja h3::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 3px;
+    background-color: #d97706;
+    margin-top: 8px;
+    border-radius: 2px;
+}
+
+.stopka-lista-kontaktowa {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.stopka-lista-kontaktowa li {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #cbd5e1; /* Lekko stonowany biały tekst */
+}
+
+/* Kolor odnośników w stopce */
+.stopka-lista-kontaktowa a {
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.stopka-lista-kontaktowa a:hover {
+    color: #d97706; /* Link podświetla się na jasno-rudy */
+}
+
+.stopka-ikona {
+    font-size: 1.2rem;
+    line-height: 1;
+    padding-top: 2px;
+    
+    /* Wymuszamy czcionkę systemową obsługującą symbole Unicode, 
+       co zapobiega zamienianiu ich w znaki zapytania */
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif; 
+    
+    /* Blokujemy kurczenie się ikony w układzie Flexbox */
+    flex-shrink: 0; 
+}
+
+/* --- RESPONSYWNOŚĆ STOPKI --- */
+@media (max-width: 768px) {
+    .stopka-strony {
+        margin-top: 80px; /* Więcej miejsca na mobile */
+        padding: 40px 0;
+    }
+    
+    .stopka-kontener {
+        flex-direction: column; /* Układ pionowy na telefonach */
+        align-items: center;
+        text-align: center;
+        gap: 50px;
+    }
+    
+    .stopka-obrazek-sekcja {
+        width: 100%;
+        height: 120px;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .stopka-nakladany-obrazek {
+        top: -90px;
+        left: -45px; /* Centrowanie obrazka na mobile */
+        width: 200px;
+    }
+    
+    .stopka-dane-sekcja {
+        text-align: center;
+        max-width: 100%;
+    }
+    
+    .stopka-dane-sekcja h3::after {
+        margin: 8px auto 0 auto; /* Centrowanie rudej kreski na mobile */
+    }
+    
+    .stopka-lista-kontaktowa li {
+        justify-content: center;
+    }
+		
+		/* --- RESPONSYWNOŚĆ DLA MOBILE (Wklej do swojej istniejącej reguły @media na dole kodu) --- */
+@media (max-width: 768px) {
+    
+    .stopka-social-kontener {
+        /* KLUCZOWA ZMIANA: Wyśrodkowanie ikon w poziomie na telefonach */
+        justify-content: center; 
+        
+        /* Delikatnie zwiększamy gap z 14px na 18px, aby łatwiej klikało się palcem */
+        gap: 18px; 
+        
+        /* Dostosowanie marginesu górnego na mobile */
+        margin-top: 20px; 
+        
+        /* Zapewnienie pełnej szerokości kontenera, by centrowanie zadziałało */
+        width: 100%; 
+    }
+
+}
+}
+
+
+
+
+
+/* ========================================================
+   DODATKOWE ELEMENTY I EFEKTY DLA STOPKI
+   ======================================================== */
+
+/* Nowa, środkowa sekcja z linkami */
+.stopka-linki-sekcja {
+    flex: 1;
+    max-width: 250px;
+    text-align: left;
+}
+
+.stopka-linki-sekcja h3 {
+    font-size: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 24px;
+    color: #ffffff;
+    font-weight: 700;
+    position: relative;
+}
+
+/* Ruda kreska pod nagłówkiem Menu (dla spójności z Kontaktem) */
+.stopka-linki-sekcja h3::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 3px;
+    background-color: #d97706;
+    margin-top: 8px;
+    border-radius: 2px;
+}
+
+.stopka-menu-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.stopka-menu-lista li {
+    margin-bottom: 14px;
+}
+
+/* EFEKT PŁYNNEGO PODŚWIETLENIA LINKÓW W MENU */
+.stopka-menu-lista a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+    display: inline-block;
+}
+
+/* Po najechaniu link delikatnie odsuwa się w prawo i robi się rudy */
+.stopka-menu-lista a:hover {
+    color: #d97706;
+    padding-left: 6px;
+}
+
+/* STYLIZACJA DOLNEGO PASKA (COPYRIGHT) */
+.stopka-dolny-pasek {
+    margin-top: 50px;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    padding-top: 25px;
+}
+
+.stopka-dolny-kontener {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #94a3b8; /* Jaśniejszy, dyskretny szary */
+    font-size: 0.9rem;
+}
+
+.stopka-dolny-kontener p {
+    margin: 0;
+}
+
+.stopka-prawne-linki {
+    display: flex;
+    gap: 20px;
+}
+
+.stopka-prawne-linki a {
+    color: #94a3b8;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.stopka-prawne-linki a:hover {
+    color: #ffffff; /* Podświetlenie na czystą biel */
+}
+
+/* --- AKTUALIZACJA RESPONSYWNOŚCI DLA 3 KOLUMN --- */
+@media (max-width: 768px) {
+    .stopka-kontener {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 40px;
+    }
+    .stopka-linki-sekcja {
+        text-align: center;
+        max-width: 100%;
+    }
+    .stopka-linki-sekcja h3::after {
+        margin: 8px auto 0 auto;
+    }
+    .stopka-menu-lista a:hover {
+        padding-left: 0; /* Wyłączamy odsuwanie w prawo na telefonach */
+        transform: scale(1.05);
+    }
+    .stopka-dolny-kontener {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
+
+
+
+
+
+
+.stopka-social-kontener {
+    display: flex;
+    gap: 14px;
+    margin-top: 25px; /* Odstęp od danych adresowych */
+}
+
+.stopka-social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.06); /* Subtelne, ciemne kółko tła */
+    border-radius: 50%; /* Idealne okrągłe pigułki */
+    color: #cbd5e1; /* Kolor ikon spójny z tekstami stopki */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Właściwości dla geometrii ikon SVG */
+.stopka-social-link svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor; /* Ikona przyjmuje kolor tekstu rodzica */
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* EFEKT HOVER: Koło zmienia kolor na jasnorudy, a ikona wewnątrz robi się biała */
+.stopka-social-link:hover {
+    background-color: #d97706; /* Jasnorudy z przycisku CTA */
+    color: #ffffff;            /* Ikona staje się czysto biała */
+    transform: translateY(-4px); /* Płynne uniesienie w górę */
+    box-shadow: 0 8px 20px rgba(217, 119, 6, 0.3);
+}
+
+
+
+
+
+
+
+/* ========================================================
+   STYLIZACJA PASKA Z TECHNOLOGIAMI (MIĘDZY SEKCJAMI)
+   ======================================================= */
+
+.pasek-technologii-kontener {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 60px auto; /* 60px odstępu od dolnej niebieskiej sekcji */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Subtelna linia odcinająca na dole */
+    padding-bottom: 25px;
+}
+
+/* Mały podpis po lewej stronie paska */
+.pasek-etykieta-tekst {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #64748b; /* Stonowany, szary kolor */
+    flex-shrink: 0;
+}
+
+/* Kontener trzymający nazwy technologii obok siebie */
+.pasek-lista-tech {
+    display: flex;
+    align-items: center;
+    gap: 40px; /* Odstęp między technologiami */
+    flex-wrap: wrap; /* Pozwala na zawijanie na mniejszych ekranach */
+}
+
+/* Pojedyncza technologia */
+.tech-item {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #03045e; /* Główny, ciemnoniebieski odcień strony */
+    opacity: 0.35;  /* Lekka przezroczystość, by pasek nie dominował na stronie */
+    cursor: default;
+    transition: all 0.3s ease;
+}
+
+/* EFEKT HOVER: Płynne podświetlenie na jasnorudy kolor i delikatne powiększenie */
+.tech-item:hover {
+    opacity: 1;
+    color: #d97706; /* Jasnorudy z przycisku CTA */
+    transform: translateY(-2px);
+}
+
+/* --- RESPONSYWNOŚĆ --- */
+@media (max-width: 768px) {
+    .pasek-technologii-kontener {
+        flex-direction: column; /* Na telefonie układamy podpis i elementy pionowo */
+        text-align: center;
+        gap: 15px;
+        margin-bottom: 40px;
+    }
+    
+    .pasek-lista-tech {
+        justify-content: center; /* Centrowanie technologii na mobile */
+        gap: 20px;
+    }
+    
+    .tech-item {
+        font-size: 1.1rem;
+    }
+}
+
+
+
+
+
+
+/* ========================================================
+   STYLIZACJA SEKCJI: SZCZEGÓŁY KURSÓW (PROGRAMU)
+   ======================================================= */
+
+.sekcja-szczegoly {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 80px auto; /* Odstęp od dolnej niebieskiej sekcji */
+    text-align: center;
+}
+
+.szczegoly-naglowek {
+    margin-bottom: 50px;
+}
+
+.szczegoly-naglowek h2 {
+    color: #03045e; /* Głęboki granat */
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin: 0 0 12px 0;
+}
+
+.szczegoly-naglowek p {
+    color: #64748b;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Kontener osi czasu */
+.program-os-czasu {
+    max-width: 850px;
+    margin: 0 auto;
+    position: relative;
+    padding-left: 20px;
+}
+
+/* Pionowa linia łącząca moduły w tle */
+.program-os-czasu::before {
+    content: "";
+    position: absolute;
+    top: 30px;
+    left: 45px; /* Idealnie na środku numerów */
+    width: 2px;
+    background: linear-gradient(to bottom, #d97706 rgba(0, 119, 182, 0.1));
+    height: calc(100% - 80px);
+    z-index: 1;
+}
+
+/* Pojedynczy wiersz/krok */
+.modul-krok {
+    display: flex;
+    align-items: flex-start;
+    gap: 35px;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 2;
+    text-align: left;
+}
+
+/* Styl wielkiego, rudego numeru modułu */
+.modul-numer {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #d97706; /* Jasnorudy z przycisku CTA */
+    background-color: #ffffff;
+    border: 2px solid #d97706;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Idealne kółko */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(217, 119, 6, 0.15);
+}
+
+/* Blok z tekstem szczegółów */
+.modul-zawartosc {
+    background-color: #ffffff;
+    padding: 25px 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(3, 4, 94, 0.04);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+/* Subtelna reakcja na myszkę */
+.modul-krok:hover .modul-zawartosc {
+    transform: translateX(5px);
+    border-color: rgba(0, 119, 182, 0.2);
+}
+
+.modul-zawartosc h3 {
+    color: #03045e;
+    margin: 0 0 8px 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.modul-zawartosc p {
+    color: #475569;
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* --- RESPONSYWNOŚĆ --- */
+@media (max-width: 768px) {
+    .program-os-czasu::before {
+        left: 25px; /* Przesunięcie linii na mniejszych ekranach */
+    }
+    
+    .modul-krok {
+        gap: 20px;
+    }
+    
+    .modul-numer {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .modul-zawartosc {
+        padding: 20px;
+    }
+    
+    .szczegoly-naglowek h2 {
+        font-size: 1.8rem;
+    }
+}
+
